@@ -1,0 +1,130 @@
+{
+  "name": "AI Research Agent with Web Search & Citations",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "0b7c5416-ad16-47fd-9ef1-52563fd705d2",
+      "name": "Research Question",
+      "webhookId": "cb507a77-4bc7-4f13-ac8a-594f464d444a"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "What are the latest AI automation trends in 2026? Search the web and cite your sources.",
+        "options": {
+          "maxIterations": 5
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        256,
+        -16
+      ],
+      "id": "48ebc88d-d086-4402-9c51-474cbe3785a7",
+      "name": "AI Agent",
+      "retryOnFail": false,
+      "waitBetweenTries": 5000,
+      "maxTries": 3
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "For every research question, you MUST call the SerpAPI Google Search tool before answering.",
+        "additionalFields": {},
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-serpapi.serpApiTool",
+      "typeVersion": 1,
+      "position": [
+        496,
+        176
+      ],
+      "id": "ecfabc20-f558-4c53-a10f-fe67f83ba1f4",
+      "name": "Web Research Search",
+      "credentials": {
+        "serpApi": {
+          "id": "YOUR_ID_HERE",
+          "name": "SerpApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        224,
+        192
+      ],
+      "id": "3bb8b324-5e8a-4155-a68c-c13e07e45e52",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "Your_Id_here",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Research Question": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Web Research Search": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "e4f62179-631a-45af-bf58-de55e5bd0920",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "dd8f6d01d2242a2dfff4871bcce3d36ccebbe96fb0a120881e00720858894466"
+  },
+  "nodeGroups": [],
+  "id": "nHnXjthfVSO2u0Hh",
+  "tags": []
+}
