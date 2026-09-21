@@ -52,13 +52,14 @@
       "name": "Web Research Search",
       "credentials": {
         "serpApi": {
-          "id": "YOUR_ID_HERE",
+          "id": "your_id_here",
           "name": "SerpApi account"
         }
       }
     },
     {
       "parameters": {
+        "modelName": "models/gemini-3.5-flash-lite",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
@@ -71,8 +72,8 @@
       "name": "Google Gemini Chat Model",
       "credentials": {
         "googlePalmApi": {
-          "id": "Your_Id_here",
-          "name": "Google Gemini(PaLM) Api account"
+          "id": "your_id_here",
+          "name": "Google Gemini(PaLM) Api account 2"
         }
       }
     }
@@ -119,7 +120,7 @@
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "e4f62179-631a-45af-bf58-de55e5bd0920",
+  "versionId": "4936dd39-9c93-4fa0-a685-1ee06aee40f6",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "dd8f6d01d2242a2dfff4871bcce3d36ccebbe96fb0a120881e00720858894466"
