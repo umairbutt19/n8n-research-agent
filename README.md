@@ -103,11 +103,12 @@ The agent will research the topic and return a structured response with supporti
 ## Project Structure
 
 ```text
+## Project Structure
+
 n8n-research-agent/
 │
 ├── README.md
-└── workflow/
-    └── research-agent.json
+└── research-agent.json
 ```
 
 ## Purpose
